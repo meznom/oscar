@@ -17,4 +17,4 @@ $ python -m oscar
 * nsm support
 
 ---
-Burkhard Ritter <burkhard@seite9.de>. December 2014.
+Burkhard Ritter (<burkhard@seite9.de>), December 2014.

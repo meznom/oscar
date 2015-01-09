@@ -1,4 +1,5 @@
 import liblo
+import logging
 
 # At least at the moment, with Ardour 3.5.403, controlling plugin parameters via
 # OSC seems to crash Ardour. E.g.
@@ -7,7 +8,8 @@ import liblo
 # s.ardour.sendosc('/ardour/routes/plugin/parameter', 5, 1, 1, 0.1)
 
 class Ardour(object):
-    def __init__(self, dm, port=3819):
+    def __init__(self, dm, ip='127.0.0.1', port=3819):
+        self.log = logging.getLogger(__name__)
         self.name = 'ardour'
         self.master_id = 318
         # The Ardour bus ids. This is hardcoded for now. 318 is the master bus.
@@ -15,9 +17,9 @@ class Ardour(object):
         self.dm = dm
 
         try:
-            self.c = liblo.Address(port)
+            self.c = liblo.Address(ip, port)
         except liblo.AddressError, e:
-            print('Could not connect to Ardour.')
+            self.log.warning('Could not connect to Ardour.')
             self.c = None
 
         self.start_listening_to_feedback()
@@ -45,16 +47,16 @@ class Ardour(object):
         i = self._convert_from_ardour_id(i)
 
         if control == 'gain':
-            print('Ardour: got {} {} {:.2f}'.format('gain', i, v))
+            self.log.debug('got {} {} {:.2f}'.format('gain', i, v))
             self.dm.vol(i, v, ignore=self.name)
         elif control == 'mute':
-            print('Ardour: got {} {} {}'.format('mute', i, v))
+            self.log.debug('got {} {} {}'.format('mute', i, v))
             self.dm.mute(i, v, ignore=self.name)
         elif control == 'solo':
-            print('Ardour: got {} {} {}'.format('solo', i, v))
+            self.log.debug('got {} {} {}'.format('solo', i, v))
             self.dm.solo(i, v, ignore=self.name)
         elif control == 'rec':
-            print('Ardour: got {} {} {}'.format('rec', i, v))
+            self.log.debug('got {} {} {}'.format('rec', i, v))
             self.dm.record(i, v, ignore=self.name)
         # Note: I do not know how to get feedback for changes in ardour to sends
         # and pan; so this only works in one direction (TouchOSC -> Ardour) for

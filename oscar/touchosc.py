@@ -1,7 +1,9 @@
 import liblo
+import logging
 
 class TouchOSC(object):
     def __init__(self, dm, ip, port=9000):
+        self.log = logging.getLogger(__name__)
         self.name = 'touchosc'
         self.dm = dm
 
@@ -13,7 +15,7 @@ class TouchOSC(object):
         try:
             self.c = liblo.Address(ip, port)
         except liblo.AddressError, e:
-            print('Could not connect to TouchOSC.')
+            self.log.warning('Could not connect to TouchOSC.')
             self.c = None
 
     def sendosc(self, path, *args):
@@ -49,30 +51,30 @@ class TouchOSC(object):
             v = float(args[0])
 
         if control == 'vol':
-            print('TouchOSC: got {} {} {:.2f}'.format('gain', i, v))
+            self.log.debug('got {} {} {:.2f}'.format('gain', i, v))
             self.dm.vol(i, v, ignore=self.name)
         elif control == 'mute':
-            print('TouchOSC: got {} {} {}'.format('mute', i, v))
+            self.log.debug('got {} {} {}'.format('mute', i, v))
             self.dm.mute(i, v, ignore=self.name)
         elif control == 'solo':
-            print('TouchOSC: got {} {} {}'.format('solo', i, v))
+            self.log.debug('got {} {} {}'.format('solo', i, v))
             self.dm.solo(i, v, ignore=self.name)
         elif control == 'rec':
-            print('TouchOSC: got {} {} {}'.format('rec', i, v))
+            self.log.debug('got {} {} {}'.format('rec', i, v))
             self.dm.record(i, v, ignore=self.name)
         elif control == 'pan':
-            print('TouchOSC: got {} {} {}'.format('pan', i, v))
+            self.log.debug('got {} {} {}'.format('pan', i, v))
             self.dm.pan(i, v, ignore=self.name)
         elif control == 'send':
-            print('TouchOSC: got {} {} {} {:.2f}'.format('send', i, j, v))
+            self.log.debug('got {} {} {} {:.2f}'.format('send', i, j, v))
             self.dm.send(i, j, v, ignore=self.name)
         elif control == 'play' and v == 1.0:
-            print('TouchOSC: got {}'.format('play'))
+            self.log.debug('got {}'.format('play'))
             self.dm.play(ignore=self.name)
             self.state['playing'] = True
             self.sendosc('/play', 1.0)
         elif control == 'stop' and v == 1.0:
-            print('TouchOSC: got {}'.format('stop'))
+            self.log.debug('got {}'.format('stop'))
             self.dm.stop(ignore=self.name)
             self.state['playing'] = False
             if self.state['recording']:
@@ -80,24 +82,24 @@ class TouchOSC(object):
             self.sendosc('/play', 0.0)
             self.sendosc('/recordglobal', float(self.state['recording']))
         elif control == 'recordglobal' and v == 1.0:
-            print('TouchOSC: got {}'.format('recordglobal'))
+            self.log.debug('got {}'.format('recordglobal'))
             self.dm.recordglobal(ignore=self.name)
             self.state['recording'] = not self.state['recording']
             self.sendosc('/recordglobal', float(self.state['recording']))
         elif control == 'rewind' and v == 1.0:
-            print('TouchOSC: got {}'.format('rewind'))
+            self.log.debug('got {}'.format('rewind'))
             self.dm.rewind(ignore=self.name)
         elif control == 'forward' and v == 1.0:
-            print('TouchOSC: got {}'.format('forward'))
+            self.log.debug('got {}'.format('forward'))
             self.dm.forward(ignore=self.name)
         elif control == 'removeglobal':
-            print('TouchOSC: got {} {}'.format('removeglobal', v))
+            self.log.debug('got {} {}'.format('removeglobal', v))
             if v == 1.0:
                 self.state['removing'] = True
             elif v == 0.0:
                 self.state['removing'] = False
         elif control == 'remove' and v == 1.0:
-            print('TouchOSC: got {} {}'.format('remove', i))
+            self.log.debug('got {} {}'.format('remove', i))
             if self.state['removing']:
                 self.dm.remove_all_regions_on_track(i)
 

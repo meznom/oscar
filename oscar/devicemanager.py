@@ -1,5 +1,8 @@
+import logging
+
 class DeviceManager(object):
     def __init__(self):
+        self.log = logging.getLogger(__name__)
         self.ds = {}
 
     def add_device(self, device):
@@ -15,7 +18,7 @@ class DeviceManager(object):
                 if name == ignore:
                     continue
                 if hasattr(device, method_name):
-                    print('Calling {} for {}'.format(method_name, name))
+                    self.log.debug('Calling {} for {}'.format(method_name, name))
                     f = getattr(device, method_name)
                     f(*args, **kwargs)
         return catchall_method
