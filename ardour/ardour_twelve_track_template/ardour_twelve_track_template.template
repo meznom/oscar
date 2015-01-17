@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Session version="3001" id-counter="8922" event-counter="0">
+  <MIDIPorts>
+    <Port name="MIDI Clock in" direction="input"/>
+    <Port name="MIDI Clock out" direction="output">
+      <Connection other="alsa_midi:UA-25 UA-25 MIDI 1 out"/>
+    </Port>
+    <Port name="MIDI control in" direction="input"/>
+    <Port name="MIDI control out" direction="output"/>
+    <Port name="MMC in" direction="input"/>
+    <Port name="MMC out" direction="output"/>
+    <Port name="MTC in" direction="input"/>
+    <Port name="MTC out" direction="output">
+      <Connection other="alsa_midi:UA-25 UA-25 MIDI 1 out"/>
+    </Port>
+  </MIDIPorts>
+  <Config>
+    <Option name="xfade-choice" value="ConstantPowerMinus3dB"/>
+    <Option name="destructive-xfade-msecs" value="2"/>
+    <Option name="use-region-fades" value="1"/>
+    <Option name="show-region-fades" value="1"/>
+    <Option name="native-file-data-format" value="FormatFloat"/>
+    <Option name="native-file-header-format" value="WAVE"/>
+    <Option name="auto-play" value="0"/>
+    <Option name="auto-return" value="0"/>
+    <Option name="auto-input" value="1"/>
+    <Option name="punch-in" value="0"/>
+    <Option name="punch-out" value="0"/>
+    <Option name="subframes-per-frame" value="100"/>
+    <Option name="timecode-format" value="timecode_30"/>
+    <Option name="raid-path" value=""/>
+    <Option name="audio-search-path" value=""/>
+    <Option name="midi-search-path" value=""/>
+    <Option name="jack-time-master" value="1"/>
+    <Option name="use-video-sync" value="0"/>
+    <Option name="video-pullup" value="0"/>
+    <Option name="show-summary" value="1"/>
+    <Option name="show-group-tabs" value="1"/>
+    <Option name="external-sync" value="0"/>
+    <Option name="insert-merge-policy" value="InsertMergeRelax"/>
+    <Option name="timecode-offset" value="0"/>
+    <Option name="timecode-offset-negative" value="1"/>
+    <Option name="slave-timecode-offset" value=" 00:00:00:00"/>
+    <Option name="timecode-generator-offset" value=" 00:00:00:00"/>
+    <Option name="glue-new-markers-to-bars-and-beats" value="0"/>
+    <Option name="midi-copy-is-fork" value="0"/>
+    <Option name="glue-new-regions-to-bars-and-beats" value="0"/>
+    <Option name="use-video-file-fps" value="0"/>
+    <Option name="videotimeline-pullup" value="1"/>
+    <Option name="show-busses-on-meterbridge" value="0"/>
+    <Option name="show-master-on-meterbridge" value="1"/>
+    <Option name="show-midi-on-meterbridge" value="1"/>
+    <Option name="show-rec-on-meterbridge" value="1"/>
+    <Option name="show-mute-on-meterbridge" value="0"/>
+    <Option name="show-solo-on-meterbridge" value="0"/>
+    <Option name="show-monitor-on-meterbridge" value="0"/>
+    <Option name="show-name-on-meterbridge" value="1"/>
+    <Option name="meterbridge-label-height" value="0"/>
+  </Config>
+  <Metadata/>
+  <Sources/>
+  <Regions/>
+  <Locations>
+    <Location id="8923" name="session" start="0" end="0" flags="IsSessionRange" locked="no" position-lock-style="AudioTime"/>
+  </Locations>
+  <Bundles/>
+  <Routes>
+    <Route id="27" name="master" default-type="audio" flags="MasterOut" active="yes" phase-invert="00" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterK20" order-key="0" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no">
+      <IO name="master" id="44" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="master/audio_in 1">
+          <Connection other="Reverb/audio_out 1"/>
+          <Connection other="12/audio_out 1"/>
+          <Connection other="11/audio_out 1"/>
+          <Connection other="10/audio_out 1"/>
+          <Connection other="9/audio_out 1"/>
+          <Connection other="8/audio_out 1"/>
+          <Connection other="7/audio_out 1"/>
+          <Connection other="6/audio_out 1"/>
+          <Connection other="5/audio_out 1"/>
+          <Connection other="4/audio_out 1"/>
+          <Connection other="3/audio_out 1"/>
+          <Connection other="2/audio_out 1"/>
+          <Connection other="1/audio_out 1"/>
+        </Port>
+        <Port type="audio" name="master/audio_in 2">
+          <Connection other="Reverb/audio_out 2"/>
+          <Connection other="12/audio_out 2"/>
+          <Connection other="11/audio_out 2"/>
+          <Connection other="10/audio_out 2"/>
+          <Connection other="9/audio_out 2"/>
+          <Connection other="8/audio_out 2"/>
+          <Connection other="7/audio_out 2"/>
+          <Connection other="6/audio_out 2"/>
+          <Connection other="5/audio_out 2"/>
+          <Connection other="4/audio_out 2"/>
+          <Connection other="3/audio_out 2"/>
+          <Connection other="2/audio_out 2"/>
+          <Connection other="1/audio_out 2"/>
+        </Port>
+      </IO>
+      <IO name="master" id="45" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="master/audio_out 1">
+          <Connection other="system:playback_1"/>
+        </Port>
+        <Port type="audio" name="master/audio_out 2">
+          <Connection other="system:playback_2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="29" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="31" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="0"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="35" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="39" flags="" value="1.000000000000"/>
+        <Controllable name="pan-elevation" id="37" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="41" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="43" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="46" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="48" flags="GainLike" value="1.000000000000"/>
+      </Processor>
+      <Processor id="49" name="meter-master" active="yes" user-latency="0" type="meter"/>
+      <Processor id="50" name="master" active="yes" user-latency="0" own-input="yes" own-output="no" output="master" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="35" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="39" flags="" value="1.000000000000"/>
+          <Controllable name="pan-elevation" id="37" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="41" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="43" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+    </Route>
+    <Route id="94" name="1" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="1" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="1" id="111" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="1/audio_in 1">
+          <Connection other="system:capture_1"/>
+          <Connection other="system:capture_2"/>
+        </Port>
+      </IO>
+      <IO name="1" id="112" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="1/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="1/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="96" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="98" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="1"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="102" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="106" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="104" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="108" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="110" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="113" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="115" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="333" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="3" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="102" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="106" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="104" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="108" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="110" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="346" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="348" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="116" name="meter-Spur 1" active="yes" user-latency="0" type="meter"/>
+      <Processor id="117" name="1" active="yes" user-latency="0" own-input="yes" own-output="no" output="1" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="102" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="106" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="104" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="108" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="110" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="119" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="1" name="1" id="121" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="127" name="2" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="2" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="2" id="144" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="2/audio_in 1">
+          <Connection other="system:capture_2"/>
+          <Connection other="system:capture_1"/>
+        </Port>
+      </IO>
+      <IO name="2" id="145" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="2/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="2/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="129" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="131" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="2"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="135" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="139" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="137" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="141" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="143" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="146" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="148" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="314" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="2" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="135" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="139" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="137" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="141" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="143" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="327" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="329" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="149" name="meter-Spur 2" active="yes" user-latency="0" type="meter"/>
+      <Processor id="150" name="2" active="yes" user-latency="0" own-input="yes" own-output="no" output="2" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="135" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="139" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="137" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="141" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="143" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="152" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="2" name="2" id="154" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="160" name="3" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="3" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="3" id="177" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="3/audio_in 1">
+          <Connection other="system:capture_1"/>
+          <Connection other="system:capture_2"/>
+        </Port>
+      </IO>
+      <IO name="3" id="178" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="3/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="3/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="162" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="164" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="3"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="168" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="172" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="170" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="174" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="176" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="179" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="181" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="295" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="1" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="168" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="172" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="170" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="174" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="176" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="308" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="310" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="182" name="meter-Spur 3" active="yes" user-latency="0" type="meter"/>
+      <Processor id="183" name="3" active="yes" user-latency="0" own-input="yes" own-output="no" output="3" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="168" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="172" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="170" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="174" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="176" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="185" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="3" name="3" id="187" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="193" name="4" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="4" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="4" id="210" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="4/audio_in 1">
+          <Connection other="system:capture_2"/>
+          <Connection other="system:capture_1"/>
+        </Port>
+      </IO>
+      <IO name="4" id="211" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="4/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="4/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="195" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="197" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="4"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="201" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="205" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="203" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="207" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="209" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="212" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="214" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="276" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="0" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="201" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="205" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="203" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="207" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="209" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="215" name="meter-Spur 4" active="yes" user-latency="0" type="meter"/>
+      <Processor id="216" name="4" active="yes" user-latency="0" own-input="yes" own-output="no" output="4" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="201" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="205" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="203" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="207" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="209" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="218" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="4" name="4" id="220" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="7402" name="5" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="5" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="5" id="7419" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="5/audio_in 1">
+          <Connection other="system:capture_1"/>
+        </Port>
+      </IO>
+      <IO name="5" id="7420" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="5/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="5/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="7404" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="7406" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="5"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="7410" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="7414" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="7412" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="7416" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="7418" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="7421" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="7423" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="7735" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="5" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7410" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7414" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7412" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7416" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7418" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="7424" name="meter-5 1" active="yes" user-latency="0" type="meter"/>
+      <Processor id="7425" name="5" active="yes" user-latency="0" own-input="yes" own-output="no" output="5" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7410" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7414" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7412" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7416" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7418" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="7427" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="5" name="5" id="7429" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="7435" name="6" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="6" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="6" id="7452" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="6/audio_in 1">
+          <Connection other="system:capture_2"/>
+        </Port>
+      </IO>
+      <IO name="6" id="7453" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="6/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="6/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="7437" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="7439" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="6"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="7443" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="7447" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="7445" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="7449" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="7451" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="7454" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="7456" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="7755" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="6" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7443" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7447" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7445" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7449" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7451" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="7457" name="meter-5 2" active="yes" user-latency="0" type="meter"/>
+      <Processor id="7458" name="6" active="yes" user-latency="0" own-input="yes" own-output="no" output="6" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7443" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7447" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7445" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7449" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7451" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="7460" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="6" name="6" id="7462" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="7468" name="7" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="7" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="7" id="7485" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="7/audio_in 1">
+          <Connection other="system:capture_1"/>
+        </Port>
+      </IO>
+      <IO name="7" id="7486" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="7/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="7/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="7470" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="7472" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="7"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="7476" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="7480" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="7478" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="7482" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="7484" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="7487" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="7489" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="7775" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="7" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7476" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7480" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7478" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7482" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7484" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="7490" name="meter-5 3" active="yes" user-latency="0" type="meter"/>
+      <Processor id="7491" name="7" active="yes" user-latency="0" own-input="yes" own-output="no" output="7" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7476" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7480" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7478" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7482" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7484" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="7493" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="7" name="7" id="7495" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="7501" name="8" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="8" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="8" id="7518" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="8/audio_in 1">
+          <Connection other="system:capture_2"/>
+        </Port>
+      </IO>
+      <IO name="8" id="7519" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="8/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="8/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="7503" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="7505" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="8"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="7509" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="7513" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="7511" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="7515" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="7517" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="7520" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="7522" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="7795" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="8" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7509" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7513" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7511" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7515" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7517" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="7523" name="meter-5 4" active="yes" user-latency="0" type="meter"/>
+      <Processor id="7524" name="8" active="yes" user-latency="0" own-input="yes" own-output="no" output="8" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7509" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7513" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7511" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7515" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7517" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="7526" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="8" name="8" id="7528" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="7534" name="9" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="9" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="9" id="7551" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="9/audio_in 1">
+          <Connection other="system:capture_1"/>
+        </Port>
+      </IO>
+      <IO name="9" id="7552" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="9/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="9/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="7536" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="7538" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="9"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="7542" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="7546" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="7544" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="7548" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="7550" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="7553" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="7555" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="7815" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="9" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7542" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7546" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7544" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7548" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7550" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="7556" name="meter-5 5" active="yes" user-latency="0" type="meter"/>
+      <Processor id="7557" name="9" active="yes" user-latency="0" own-input="yes" own-output="no" output="9" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7542" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7546" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7544" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7548" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7550" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="7559" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="9" name="9" id="7561" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="7567" name="10" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="10" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="10" id="7584" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="10/audio_in 1">
+          <Connection other="system:capture_2"/>
+        </Port>
+      </IO>
+      <IO name="10" id="7585" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="10/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="10/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="7569" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="7571" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="10"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="7575" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="7579" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="7577" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="7581" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="7583" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="7586" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="7588" flags="GainLike" value="1.014029264450"/>
+      </Processor>
+      <Processor id="7835" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="10" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7575" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7579" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7577" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7581" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7583" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="7589" name="meter-5 6" active="yes" user-latency="0" type="meter"/>
+      <Processor id="7590" name="10" active="yes" user-latency="0" own-input="yes" own-output="no" output="10" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7575" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7579" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7577" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7581" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7583" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="7592" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="10" name="10" id="7594" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="7600" name="11" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="11" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="11" id="7617" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="11/audio_in 1">
+          <Connection other="system:capture_1"/>
+        </Port>
+      </IO>
+      <IO name="11" id="7618" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="11/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="11/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="7602" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="7604" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="11"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="7608" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="7612" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="7610" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="7614" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="7616" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="7619" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="7621" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="7855" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="11" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7608" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7612" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7610" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7614" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7616" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="7622" name="meter-5 7" active="yes" user-latency="0" type="meter"/>
+      <Processor id="7623" name="11" active="yes" user-latency="0" own-input="yes" own-output="no" output="11" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7608" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7612" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7610" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7614" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7616" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="7625" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="11" name="11" id="7627" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="7633" name="12" default-type="audio" active="yes" phase-invert="0" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="12" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no" monitoring="" saved-meter-point="MeterPostFader" mode="Normal">
+      <IO name="12" id="7650" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="12/audio_in 1">
+          <Connection other="system:capture_2"/>
+        </Port>
+      </IO>
+      <IO name="12" id="7651" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="12/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="12/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="7635" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="7637" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="12"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="7641" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="7645" flags="" value="0.000000000000"/>
+        <Controllable name="pan-elevation" id="7643" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="7647" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="7649" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="7652" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="7654" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="7875" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intsend" role="Aux" bitslot="12" target="242">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes">
+          <Panner uri="http://ardour.org/plugin/panner_1in2out" type="Mono to Stereo Panner"/>
+        </PannerShell>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7641" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7645" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7643" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7647" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7649" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+        <Processor id="289" name="Amp" active="yes" user-latency="0" type="amp">
+          <Controllable name="gaincontrol" id="291" flags="GainLike" value="0.999999940395"/>
+        </Processor>
+      </Processor>
+      <Processor id="7655" name="meter-5 8" active="yes" user-latency="0" type="meter"/>
+      <Processor id="7656" name="12" active="yes" user-latency="0" own-input="yes" own-output="no" output="12" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="7641" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="7645" flags="" value="0.000000000000"/>
+          <Controllable name="pan-elevation" id="7643" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="7647" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="7649" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+      <Controllable name="recenable" id="7658" flags="Toggle" value="0.000000000000"/>
+      <Diskstream flags="Recordable" playlist="12" name="12" id="7660" speed="1.000000" capture-alignment="Automatic" channels="1"/>
+    </Route>
+    <Route id="242" name="Reverb" default-type="audio" active="yes" phase-invert="00" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="13" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no">
+      <IO name="Reverb" id="259" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="Reverb/audio_in 1"/>
+        <Port type="audio" name="Reverb/audio_in 2"/>
+      </IO>
+      <IO name="Reverb" id="260" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="Reverb/audio_out 1">
+          <Connection other="master/audio_in 1"/>
+        </Port>
+        <Port type="audio" name="Reverb/audio_out 2">
+          <Connection other="master/audio_in 2"/>
+        </Port>
+      </IO>
+      <Controllable name="solo" id="244" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="246" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="13"/>
+      <Pannable>
+        <Controllable name="pan-azimuth" id="250" flags="" value="0.500000000000"/>
+        <Controllable name="pan-width" id="254" flags="" value="1.000000000000"/>
+        <Controllable name="pan-elevation" id="252" flags="" value="0.000000000000"/>
+        <Controllable name="pan-frontback" id="256" flags="" value="0.000000000000"/>
+        <Controllable name="pan-lfe" id="258" flags="" value="0.000000000000"/>
+        <Automation/>
+      </Pannable>
+      <Processor id="268" name="return 1" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intreturn" bitslot="0"/>
+      <Processor id="2966" name="Calf Reverb" active="yes" user-latency="0" type="lv2" unique-id="http://calf.sourceforge.net/plugins/Reverb" count="1">
+        <lv2 last-preset-uri="" last-preset-label="" parameter-changed-since-last-preset="yes">
+          <Port symbol="decay_time" value="+0.688656"/>
+          <Port symbol="hf_damp" value="+5000.000488"/>
+          <Port symbol="room_size" value="+1.000000"/>
+          <Port symbol="diffusion" value="+0.460000"/>
+          <Port symbol="amount" value="+1.064370"/>
+          <Port symbol="dry" value="+0.000000"/>
+          <Port symbol="predelay" value="+0.000000"/>
+          <Port symbol="bass_cut" value="+300.000000"/>
+          <Port symbol="treble_cut" value="+5000.000000"/>
+        </lv2>
+        <Controllable name="Decay time" id="2968" flags="" value="0.688655972481" parameter="7"/>
+        <Controllable name="High Frq Damp" id="2970" flags="" value="5000.000488281250" parameter="8"/>
+        <Controllable name="Room size" id="2972" flags="" value="1.000000000000" parameter="9"/>
+        <Controllable name="Diffusion" id="2974" flags="" value="0.460000008345" parameter="10"/>
+        <Controllable name="Wet Amount" id="2976" flags="" value="1.064370036125" parameter="11"/>
+        <Controllable name="Dry Amount" id="2978" flags="" value="0.000000000000" parameter="12"/>
+        <Controllable name="Pre Delay" id="2980" flags="" value="0.000000000000" parameter="13"/>
+        <Controllable name="Bass Cut" id="2982" flags="" value="300.000000000000" parameter="14"/>
+        <Controllable name="Treble Cut" id="2984" flags="" value="5000.000000000000" parameter="15"/>
+      </Processor>
+      <Processor id="261" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="263" flags="GainLike" value="0.999999940395"/>
+      </Processor>
+      <Processor id="264" name="meter-Hall" active="yes" user-latency="0" type="meter"/>
+      <Processor id="265" name="Reverb" active="yes" user-latency="0" own-input="yes" own-output="no" output="Reverb" type="main-outs" role="Main">
+        <PannerShell bypassed="no" user-panner="" linked-to-route="yes"/>
+        <Pannable>
+          <Controllable name="pan-azimuth" id="250" flags="" value="0.500000000000"/>
+          <Controllable name="pan-width" id="254" flags="" value="1.000000000000"/>
+          <Controllable name="pan-elevation" id="252" flags="" value="0.000000000000"/>
+          <Controllable name="pan-frontback" id="256" flags="" value="0.000000000000"/>
+          <Controllable name="pan-lfe" id="258" flags="" value="0.000000000000"/>
+          <Automation/>
+        </Pannable>
+      </Processor>
+    </Route>
+  </Routes>
+  <Playlists>
+    <Playlist id="188" name="3" type="audio" orig-track-id="160" frozen="no"/>
+    <Playlist id="122" name="1" type="audio" orig-track-id="94" frozen="no"/>
+    <Playlist id="221" name="4" type="audio" orig-track-id="193" frozen="no"/>
+    <Playlist id="155" name="2" type="audio" orig-track-id="127" frozen="no"/>
+    <Playlist id="7463" name="6" type="audio" orig-track-id="7435" frozen="no"/>
+    <Playlist id="7496" name="7" type="audio" orig-track-id="7468" frozen="no"/>
+    <Playlist id="7529" name="8" type="audio" orig-track-id="7501" frozen="no"/>
+    <Playlist id="7430" name="5" type="audio" orig-track-id="7402" frozen="no"/>
+    <Playlist id="7595" name="10" type="audio" orig-track-id="7567" frozen="no"/>
+    <Playlist id="7562" name="9" type="audio" orig-track-id="7534" frozen="no"/>
+    <Playlist id="7661" name="12" type="audio" orig-track-id="7633" frozen="no"/>
+    <Playlist id="7628" name="11" type="audio" orig-track-id="7600" frozen="no"/>
+  </Playlists>
+  <UnusedPlaylists/>
+  <RouteGroups/>
+  <Click>
+    <IO name="Click" id="23" direction="Output" default-type="audio" user-latency="0">
+      <Port type="audio" name="Click/audio_out 1">
+        <Connection other="system:playback_1"/>
+      </Port>
+      <Port type="audio" name="Click/audio_out 2">
+        <Connection other="system:playback_2"/>
+      </Port>
+    </IO>
+    <Processor id="24" name="Amp" active="yes" user-latency="0" type="amp">
+      <Controllable name="gaincontrol" id="26" flags="GainLike" value="1.000000000000"/>
+    </Processor>
+  </Click>
+  <LTC-In>
+    <IO name="LTC In" id="21" direction="Input" default-type="audio" user-latency="0">
+      <Port type="audio" name="LTC-in">
+        <Connection other="system:capture_1"/>
+      </Port>
+    </IO>
+  </LTC-In>
+  <LTC-Out>
+    <IO name="LTC Out" id="22" direction="Output" default-type="audio" user-latency="0">
+      <Port type="audio" name="LTC-out"/>
+    </IO>
+  </LTC-Out>
+  <Speakers>
+    <Speaker azimuth="240" elevation="0" distance="1"/>
+    <Speaker azimuth="120" elevation="0" distance="1"/>
+  </Speakers>
+  <TempoMap>
+    <Tempo start="1|1|0" beats-per-minute="120.000000" note-type="4.000000" movable="no"/>
+    <Meter start="1|1|0" note-type="4.000000" divisions-per-bar="4.000000" movable="no"/>
+  </TempoMap>
+  <ControlProtocols>
+    <Protocol name="Generic MIDI" feedback="0" feedback-interval="10000" threshold="10" active="no">
+      <Controls/>
+    </Protocol>
+    <Protocol name="Open Sound Control (OSC)" feedback="1" active="yes"/>
+    <Protocol name="Mackie" active="no"/>
+  </ControlProtocols>
+  <Extra>
+    <RulerVisibility timecode="yes" bbt="no" samples="no" minsec="no" tempo="yes" meter="yes" marker="yes" rangemarker="yes" transportmarker="no" cdmarker="no" videotl="no"/>
+    <UI>
+      <Window name="theme-manager" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="key-editor" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="rc-options-editor" visible="no" x-off="175" y-off="135" x-size="617" y-size="557"/>
+      <Window name="session-options-editor" visible="no" x-off="0" y-off="175" x-size="540" y-size="338"/>
+      <Window name="speaker-config" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="about" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="add-routes" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="add-video" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="inspector" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="audio-midi-setup" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="bundle-manager" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="locations" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="big-clock" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="audio-connection-manager" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="midi-connection-manager" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="R-27-46" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="R-27-49" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="R-27-50" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-94-113" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-94-333" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-94-116" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-94-117" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-127-146" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-127-314" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-127-149" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-127-150" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-160-179" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-160-295" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-160-182" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-160-183" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-193-212" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-193-276" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-193-215" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-193-216" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7402-7421" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7402-7735" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7402-7424" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7402-7425" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7435-7454" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7435-7755" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7435-7457" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7435-7458" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7468-7487" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7468-7775" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7468-7490" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7468-7491" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7501-7520" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7501-7795" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7501-7523" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7501-7524" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7534-7553" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7534-7815" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7534-7556" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7534-7557" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7567-7586" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7567-7835" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7567-7589" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7567-7590" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7600-7619" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7600-7855" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7600-7622" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7600-7623" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7633-7652" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7633-7875" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7633-7655" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-7633-7656" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-242-268" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-242-2966" visible="no" x-off="322" y-off="40" x-size="712" y-size="241" custom-ui="no"/>
+      <Window name="M-242-261" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-242-264" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-242-265" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-27-46" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-27-49" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <Window name="M-27-50" visible="no" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="no"/>
+      <GUIObjectState>
+        <Object id="route 27" color="41475:19851:39415"/>
+        <Object id="rtav 27" height="64" visible="1"/>
+        <Object id="automation 48" height="64" visible="0"/>
+        <Object id="automation 35" height="64" visible="0"/>
+        <Object id="automation 39" height="64" visible="0"/>
+        <Object id="strip 27" visible="1" strip-width="Wide">
+          <Object id="processor 46"/>
+        </Object>
+        <Object id="route 94" color="42353:35894:19131"/>
+        <Object id="route 127" color="42241:4074:7051"/>
+        <Object id="route 160" color="6911:47488:5074"/>
+        <Object id="route 193" color="10046:47270:34850"/>
+        <Object id="rtav 94" height="30" visible="1"/>
+        <Object id="automation 115" height="64" visible="0"/>
+        <Object id="automation 102" height="64" visible="0"/>
+        <Object id="rtav 127" height="30" visible="1"/>
+        <Object id="automation 148" height="64" visible="0"/>
+        <Object id="automation 135" height="64" visible="0"/>
+        <Object id="rtav 160" height="30" visible="1"/>
+        <Object id="automation 181" height="64" visible="0"/>
+        <Object id="automation 168" height="64" visible="0"/>
+        <Object id="rtav 193" height="30" visible="1"/>
+        <Object id="automation 214" height="64" visible="0"/>
+        <Object id="automation 201" height="64" visible="0"/>
+        <Object id="strip 94" visible="1" strip-width="Wide">
+          <Object id="processor 113"/>
+          <Object id="processor 333">
+            <Object id="control 348" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 127" visible="1" strip-width="Wide">
+          <Object id="processor 146"/>
+          <Object id="processor 314">
+            <Object id="control 329" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 160" visible="1" strip-width="Wide">
+          <Object id="processor 179"/>
+          <Object id="processor 295">
+            <Object id="control 310" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 193" visible="1" strip-width="Wide">
+          <Object id="processor 212"/>
+          <Object id="processor 276">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="route 242" color="38260:12862:36224"/>
+        <Object id="rtav 242" height="30" visible="1"/>
+        <Object id="automation 263" height="64" visible="0"/>
+        <Object id="automation 250" height="64" visible="0"/>
+        <Object id="automation 254" height="64" visible="0"/>
+        <Object id="strip 242" visible="1">
+          <Object id="processor 261"/>
+          <Object id="processor 2966"/>
+        </Object>
+        <Object id="route 7402" color="7416:31932:27839"/>
+        <Object id="route 7435" color="2317:23440:16183"/>
+        <Object id="route 7468" color="29315:15957:27058"/>
+        <Object id="route 7501" color="27767:4614:14800"/>
+        <Object id="route 7534" color="38516:34214:27132"/>
+        <Object id="route 7567" color="3139:24354:27581"/>
+        <Object id="route 7600" color="28857:31197:26996"/>
+        <Object id="route 7633" color="27932:42759:32003"/>
+        <Object id="rtav 7402" height="30" visible="1"/>
+        <Object id="automation 7423" height="64" visible="0"/>
+        <Object id="automation 7410" height="64" visible="0"/>
+        <Object id="rtav 7435" height="30" visible="1"/>
+        <Object id="automation 7456" height="64" visible="0"/>
+        <Object id="automation 7443" height="64" visible="0"/>
+        <Object id="rtav 7468" height="30" visible="1"/>
+        <Object id="automation 7489" height="64" visible="0"/>
+        <Object id="automation 7476" height="64" visible="0"/>
+        <Object id="rtav 7501" height="30" visible="1"/>
+        <Object id="automation 7522" height="64" visible="0"/>
+        <Object id="automation 7509" height="64" visible="0"/>
+        <Object id="rtav 7534" height="30" visible="1"/>
+        <Object id="automation 7555" height="64" visible="0"/>
+        <Object id="automation 7542" height="64" visible="0"/>
+        <Object id="rtav 7567" height="30" visible="1"/>
+        <Object id="automation 7588" height="64" visible="0"/>
+        <Object id="automation 7575" height="64" visible="0"/>
+        <Object id="rtav 7600" height="30" visible="1"/>
+        <Object id="automation 7621" height="64" visible="0"/>
+        <Object id="automation 7608" height="64" visible="0"/>
+        <Object id="rtav 7633" height="30" visible="1"/>
+        <Object id="automation 7654" height="64" visible="0"/>
+        <Object id="automation 7641" height="64" visible="0"/>
+        <Object id="strip 7402" visible="1">
+          <Object id="processor 7421"/>
+          <Object id="processor 7715">
+            <Object id="control 291" visible="1"/>
+          </Object>
+          <Object id="processor 7735">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 7435" visible="1">
+          <Object id="processor 7454"/>
+          <Object id="processor 7755">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 7468" visible="1">
+          <Object id="processor 7487"/>
+          <Object id="processor 7775">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 7501" visible="1">
+          <Object id="processor 7520"/>
+          <Object id="processor 7795">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 7534" visible="1">
+          <Object id="processor 7553"/>
+          <Object id="processor 7815">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 7567" visible="1">
+          <Object id="processor 7586"/>
+          <Object id="processor 7835">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 7600" visible="1">
+          <Object id="processor 7619"/>
+          <Object id="processor 7855">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="strip 7633" visible="1">
+          <Object id="processor 7652"/>
+          <Object id="processor 7875">
+            <Object id="control 291" visible="1"/>
+          </Object>
+        </Object>
+        <Object id="route_group 7714" color="20308:34502:41914"/>
+      </GUIObjectState>
+    </UI>
+    <Videomonitor active="no"/>
+  </Extra>
+</Session>

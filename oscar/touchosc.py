@@ -19,7 +19,7 @@ class TouchOSC(object):
             self.c = None
 
     def sendosc(self, path, *args):
-        pages = ['/oscar_page_1','/oscar_page_2']
+        pages = ['/oscar_page_1','/oscar_page_2','/oscar_page_3']
         if self.c is not None:
             for p in pages:
                 liblo.send(self.c, p + path, *args)
@@ -69,12 +69,12 @@ class TouchOSC(object):
             self.log.debug('got {} {} {} {:.2f}'.format('send', i, j, v))
             self.dm.send(i, j, v, ignore=self.name)
         elif control == 'play' and v == 1.0:
-            self.log.debug('got {}'.format('play'))
+            self.log.debug('got play')
             self.dm.play(ignore=self.name)
             self.state['playing'] = True
             self.sendosc('/play', 1.0)
         elif control == 'stop' and v == 1.0:
-            self.log.debug('got {}'.format('stop'))
+            self.log.debug('got stop')
             self.dm.stop(ignore=self.name)
             self.state['playing'] = False
             if self.state['recording']:
@@ -82,16 +82,25 @@ class TouchOSC(object):
             self.sendosc('/play', 0.0)
             self.sendosc('/recordglobal', float(self.state['recording']))
         elif control == 'recordglobal' and v == 1.0:
-            self.log.debug('got {}'.format('recordglobal'))
+            self.log.debug('got recordglobal')
             self.dm.recordglobal(ignore=self.name)
             self.state['recording'] = not self.state['recording']
             self.sendosc('/recordglobal', float(self.state['recording']))
         elif control == 'rewind' and v == 1.0:
-            self.log.debug('got {}'.format('rewind'))
+            self.log.debug('got rewind')
             self.dm.rewind(ignore=self.name)
         elif control == 'forward' and v == 1.0:
-            self.log.debug('got {}'.format('forward'))
+            self.log.debug('got forward')
             self.dm.forward(ignore=self.name)
+        elif control == 'addmarker' and v == 1.0:
+            self.log.debug('got addmarker')
+            self.dm.addmarker(ignore=self.name)
+        elif control == 'undo' and v == 1.0:
+            self.log.debug('got undo')
+            self.dm.undo(ignore=self.name)
+        elif control == 'redo' and v == 1.0:
+            self.log.debug('got redo')
+            self.dm.redo(ignore=self.name)
         elif control == 'removeglobal':
             self.log.debug('got {} {}'.format('removeglobal', v))
             if v == 1.0:

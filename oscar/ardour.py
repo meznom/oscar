@@ -12,8 +12,9 @@ class Ardour(object):
         self.log = logging.getLogger(__name__)
         self.name = 'ardour'
         self.master_id = 318
+        self.n_tracks = 12
         # The Ardour bus ids. This is hardcoded for now. 318 is the master bus.
-        self.ids = [1,2,3,4,5,self.master_id]
+        self.ids = range(1,self.n_tracks+1) + [self.master_id]
         self.dm = dm
 
         try:
@@ -102,15 +103,24 @@ class Ardour(object):
         self.sendosc('/ardour/rec_enable_toggle')
 
     def rewind(self):
-        self.sendosc('/ardour/goto_start')
+        self.sendosc('/ardour/prev_marker')
 
     def forward(self):
-        self.sendosc('/ardour/goto_end')
+        self.sendosc('/ardour/next_marker')
+
+    def addmarker(self):
+        self.sendosc('/ardour/add_marker')
+
+    def undo(self):
+        self.sendosc('/ardour/undo')
+
+    def redo(self):
+        self.sendosc('/ardour/redo')
 
     def remove_all_regions_on_track(self, i):
         # This might be pretty fragile and at any rate is very tightly coupled
         # to the Ardour template / layout of tracks
-        if i<1 or i>4:
+        if i<1 or i>self.n_tracks:
             return
         self.sendosc('/ardour/access_action', 'Editor/deselect-all')
         for j in range(i+1):
