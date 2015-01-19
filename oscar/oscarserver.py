@@ -16,13 +16,19 @@ class OscarServer(liblo.ServerThread):
         self.ardour = Ardour(self.dm, ardour_ip, ardour_port)
         self.dm.add_device(self.ardour)
 
-        self.persist = PersistState()
+        self.persist = PersistState(self.dm)
         self.dm.add_device(self.persist)
 
         self.touchosc = TouchOSC(self.dm, touchosc_ip, touchosc_port)
         self.dm.add_device(self.touchosc)
 
-        self.start()
+    def start(self):
+        liblo.ServerThread.start(self)
+        self.persist.restore()
+
+    def stop(self):
+        liblo.ServerThread.stop(self)
+        self.persist.save()
 
     @liblo.make_method(None, None)
     def got_message(self, path, args):

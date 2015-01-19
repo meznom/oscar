@@ -123,3 +123,9 @@ class TouchOSC(object):
 
     def record(self, i, v):
         self.sendosc('/rec_{}'.format(i), v)
+
+    def pan(self, i, v):
+        self.sendosc('/pan_{}'.format(i), v)
+
+    def send(self, i, j, v):
+        self.sendosc('/send_{}_{}'.format(i, j), v)

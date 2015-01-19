@@ -35,11 +35,12 @@ def main():
                     ardour_ip=args.ardour_ip,
                     ardour_port=args.ardour_port,
                     oscar_port=args.oscar_port)
-
+    s.start()
     while True:
         k = raw_input('Press q to quit.\n')
         if k == 'q':
             break
+    s.stop()
 
 if __name__ == '__main__':
     main()
