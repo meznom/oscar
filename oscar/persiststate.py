@@ -2,10 +2,7 @@ import logging
 import copy
 import os
 import json
-
-# TODO: save state to state file periodically
-# TODO: also "restore" settings when we don't actually load anything from a
-#       file? (so that ardour and touchosc are in a consistent state...)
+import time
 
 class PersistState(object):
     def __init__(self, dm, state_file='oscar.state'):
@@ -21,53 +18,82 @@ class PersistState(object):
     def save(self):
         if self.state_file is None:
             return
-        with open(self.state_file, 'w') as f:
-            # TODO: should save oscar version as well
-            d = {'tracks': self.state, '__info__': 'Oscar state file'}
-            json.dump(d, f, indent=2)
-            self.log.debug('Saved state to file "{}"'.format(self.state_file))
+        try:
+            with open(self.state_file, 'w') as f:
+                # TODO: should save oscar version as well
+                d = {'tracks': self.state, '__info__': 'Oscar state file'}
+                json.dump(d, f, indent=2)
+                self.log.info('Saved state to file "{}"'.format(self.state_file))
+        except IOError:
+            self.log.error('Could not save state: Cannot write to file '
+                           '"{}"'.format(self.state_file))
+            raise
 
     def restore(self):
+        if self.read_state_from_state_file():
+            # "Broadcast" the read settings to all devices via the device manager,
+            # i.e. actually restore the settings to Ardour and TouchOSC
+            self.broadcast_state()
+            self.log.info('Restored settings from file "{}"'.format(self.state_file))
+        else:
+            # Broadcast our settings anyway --- so that Ardour and TouchOSC and
+            # we are in a consistent state; we might want to make this behaviour
+            # configurable
+            self.broadcast_state()
+
+    def read_state_from_state_file(self):
         # Open file if it exists and parse json
         if self.state_file is None:
-            return
-        if not os.path.isfile(self.state_file):
+            return False
+        if not os.path.exists(self.state_file):
             self.log.info('Oscar state file "{}" does not exist '
                           '--- no settings to restore'.format(self.state_file))
-            return
-        with open(self.state_file, 'r') as f:
-            d = json.load(f)
+            return False
+        d = {}
+        try:
+            with open(self.state_file, 'r') as f:
+                d = json.load(f)
+        except IOError:
+            self.log.error('Could not restore state: Cannot read file '
+                           '"{}"'.format(self.state_file))
+            raise
+        except ValueError:
+            self.log.error('Could not restore state: Invalid state file '
+                           '"{}"'.format(self.state_file))
+            raise
 
         # Read contents of file to self.state; basic validity check on the
         # read data structure
         valid = True
-        if d.has_key('tracks'):
-            for i,t in enumerate(self.state):
+        state_copy = copy.deepcopy(self.state)
+        if not d.has_key('tracks'):
+            valid = False
+        else:
+            for i,t in enumerate(state_copy):
                 if i<len(d['tracks']):
                     t_ = d['tracks'][i]
                     for k in t.keys():
-                        if t_.has_key(k):
-                            t[k] = t_[k]
-                        else:
+                        if not t_.has_key(k):
                             valid = False
-        else:
-            valid = False
-
+                        else:
+                            t[k] = t_[k]
         if not valid:
-            self.log.warning('Could not restore state: Invalid state file '
-                             '""'.format(self.state_file))
-            return
+            self.log.error('Could not restore state: Invalid state file '
+                           '"{}"'.format(self.state_file))
+            raise ValueError('Invalid state file')
+        self.state = state_copy
+        return True
 
-        # "Broadcast" the read settings to all devices via the device manager,
-        # i.e. actually restore the settings to Ardour and TouchOSC
+    def broadcast_state(self):
+        # "Broadcast" our state to all devices via the device manager
         for i,t in enumerate(self.state):
             for k,v in t.iteritems():
                 f = getattr(self.dm, k)
                 if k == 'send':
-                    f(i,1,v,ignore=self.name)
+                    f(i,1,v[0],ignore=self.name)
                 else:
                     f(i,v,ignore=self.name)
-        self.log.info('Restored settings from file "{}"'.format(self.state_file))
+                time.sleep(0.01)
 
     def __getattr__(self, method_name):
         def wrapper_method(i, v):

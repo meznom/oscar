@@ -7,6 +7,10 @@ class TouchOSC(object):
         self.name = 'touchosc'
         self.dm = dm
 
+        self.n_tracks = 12
+        self.tracks_per_page = 4
+        self.pages = ['/oscar_page_1','/oscar_page_2','/oscar_page_3']
+
         # We manage the state ourselves, because we do not get feedback from
         # Ardour for play, stop, and recordglobal; obviously, this only
         # works as long as the user does not use the Ardour GUI
@@ -18,11 +22,19 @@ class TouchOSC(object):
             self.log.warning('Could not connect to TouchOSC.')
             self.c = None
 
-    def sendosc(self, path, *args):
-        pages = ['/oscar_page_1','/oscar_page_2','/oscar_page_3']
-        if self.c is not None:
-            for p in pages:
-                liblo.send(self.c, p + path, *args)
+    def sendosc(self, pagenumber, path, *args):
+        if self.c is None:
+            return
+        if pagenumber is None:
+            return
+        page = self.pages[pagenumber]
+        liblo.send(self.c, page + path, *args)
+
+    def pagenumber(self, tracknumber):
+        i = tracknumber
+        if i<1 or i>self.n_tracks:
+            return None
+        return (i-1) // self.tracks_per_page
 
     def handle_osc(self, path, args):
         if not path.startswith('/oscar_page'):
@@ -113,19 +125,19 @@ class TouchOSC(object):
                 self.dm.remove_all_regions_on_track(i)
 
     def vol(self, i, v):
-        self.sendosc('/vol_{}'.format(i), v)
+        self.sendosc(self.pagenumber(i), '/vol_{}'.format(i), v)
 
     def mute(self, i, v):
-        self.sendosc('/mute_{}'.format(i), v)
+        self.sendosc(self.pagenumber(i), '/mute_{}'.format(i), v)
 
     def solo(self, i, v):
-        self.sendosc('/solo_{}'.format(i), v)
+        self.sendosc(self.pagenumber(i), '/solo_{}'.format(i), v)
 
     def record(self, i, v):
-        self.sendosc('/rec_{}'.format(i), v)
+        self.sendosc(self.pagenumber(i), '/rec_{}'.format(i), v)
 
     def pan(self, i, v):
-        self.sendosc('/pan_{}'.format(i), v)
+        self.sendosc(self.pagenumber(i), '/pan_{}'.format(i), v)
 
     def send(self, i, j, v):
-        self.sendosc('/send_{}_{}'.format(i, j), v)
+        self.sendosc(self.pagenumber(i), '/send_{}_{}'.format(i, j), v)
