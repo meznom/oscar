@@ -6,14 +6,14 @@ from .ardour import Ardour
 from .persiststate import PersistState
 from .touchosc import TouchOSC
 
-# TODO: before restoring the state, make sure both Ardour and TouchOSC are "ready"
-#       (for that implement a method "is_ready")
+# TODO: It might be nice to interactively re-broadcast the current state
+#       (e.g. for the case when TouchOSC is restarted or started late).
 
 class OscarServer(liblo.ServerThread):
     def __init__(self, oscar_port=8000,
                  ardour_ip='127.0.0.1', ardour_port='3819',
                  touchosc_ip='127.0.0.1', touchosc_port='9000',
-                 state_file='oscar.state',
+                 persist_state=True, state_file='oscar.state',
                  autosave=True, autosave_interval=60):
         liblo.ServerThread.__init__(self, oscar_port)
         self.log = logging.getLogger(__name__)
@@ -28,7 +28,8 @@ class OscarServer(liblo.ServerThread):
         self.dm.add_device(self.touchosc)
 
         # Set up the saver thread
-        self.autosave = autosave
+        self.persist_state = persist_state
+        self.autosave = persist_state and autosave
         self.saver_thread = None
         self.exit_saver_thread = None
         if self.autosave:
@@ -44,26 +45,37 @@ class OscarServer(liblo.ServerThread):
         # right now should be true (plus there's the global interpreter lock);
         # otherwise we might store an inconsistent state.
         liblo.ServerThread.start(self)
-        self.persist.restore()
+        self.ardour.start()
+        self.touchosc.start()
+        if self.ardour.ready() and self.touchosc.ready():
+            self.persist.restore()
+        else:
+            self.persist_state = False
+            self.autosave = False
+            self.log.warning('Ardour and TouchOSC are not ready: Not restoring '
+                             'or saving state')
         if self.autosave:
             self.saver_thread.start()
 
     def stop(self):
         liblo.ServerThread.stop(self)
+        self.ardour.stop()
+        self.touchosc.stop()
         if self.autosave:
             self.exit_saver_thread.set()
             self.saver_thread.join()
-        self.persist.save()
+        if self.persist_state:
+            self.persist.save()
 
     def saver_thread_run(self, autosave_interval):
         # Save every autosave_interval seconds, until we get the exit event
-        while not self.exit_saver_thread.wait(autosave_interval):
+        while self.persist_state and not self.exit_saver_thread.wait(autosave_interval):
             self.persist.save()
 
     @liblo.make_method(None, None)
     def got_message(self, path, args):
         self.log.debug('Got message "{}" with arguments {}'.format(path, args))
-        if path.startswith('/route/'):
+        if path.startswith('/route/') or path.startswith('#reply'):
             self.ardour.handle_osc(path, args)
         elif path.startswith('/oscar_page'):
             self.touchosc.handle_osc(path, args)

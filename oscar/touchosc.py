@@ -124,6 +124,19 @@ class TouchOSC(object):
             if self.state['removing']:
                 self.dm.remove_all_regions_on_track(i)
 
+    def start(self):
+        pass
+
+    def stop(self):
+        pass
+
+    def ready(self):
+        # It seems there is no way to know whether TouchOSC is actually there or
+        # not. Hence we assume it is always ready. (There is the ping option,
+        # which sends a /ping message, but only every 60 seconds which is too
+        # long to wait to start up oscar.)
+        return True
+
     def vol(self, i, v):
         self.sendosc(self.pagenumber(i), '/vol_{}'.format(i), v)
 

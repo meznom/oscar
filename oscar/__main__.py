@@ -57,7 +57,8 @@ def main():
                     ardour_ip=args.ardour_ip,
                     ardour_port=args.ardour_port,
                     oscar_port=args.oscar_port,
-                    state_file=None if args.no_persist_state else args.state_file,
+                    persist_state=not args.no_persist_state,
+                    state_file=args.state_file,
                     autosave=not args.no_autosave,
                     autosave_interval=autosave_interval)
     s.start()

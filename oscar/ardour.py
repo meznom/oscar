@@ -1,5 +1,6 @@
 import liblo
 import logging
+import time
 
 # At least at the moment, with Ardour 3.5.403, controlling plugin parameters via
 # OSC seems to crash Ardour. E.g.
@@ -16,14 +17,13 @@ class Ardour(object):
         # The Ardour bus ids. This is hardcoded for now. 318 is the master bus.
         self.ids = range(1,self.n_tracks+1) + [self.master_id]
         self.dm = dm
+        self.is_ready = False
 
         try:
             self.c = liblo.Address(ip, port)
         except liblo.AddressError, e:
             self.log.warning('Could not connect to Ardour.')
             self.c = None
-
-        self.start_listening_to_feedback()
 
     def __del__(self):
         self.stop_listening_to_feedback()
@@ -33,6 +33,9 @@ class Ardour(object):
             liblo.send(self.c, path, *args)
 
     def handle_osc(self, path, args):
+        if path.startswith('#reply'):
+            self.is_ready = True
+            return
         if not path.startswith('/route/'):
             return
         segments = path.strip(' /').split('/')
@@ -63,11 +66,26 @@ class Ardour(object):
         # and pan; so this only works in one direction (TouchOSC -> Ardour) for
         # now
 
-    def start_listening_to_feedback(self):
-        self.sendosc('/routes/listen', *self.ids)
+    def start(self):
+        timeout = 60
+        t = 0
+        while not self.is_ready:
+            self.sendosc('/routes/listen', *self.ids)
+            self.log.info('Waiting for feedback from Ardour')
+            time.sleep(1)
+            t += 1
+            if t>timeout:
+                self.log.warning('I did not hear back from Ardour for {} '
+                                 'seconds, giving up'.format(timeout))
+                return
+        self.log.info('Ardour is ready')
 
-    def stop_listening_to_feedback(self):
+    def stop(self):
         self.sendosc('/routes/ignore', *self.ids)
+        self.is_ready = False
+
+    def ready(self):
+        return self.is_ready
 
     def vol(self, i, v):
         i = self._convert_to_ardour_id(i)
