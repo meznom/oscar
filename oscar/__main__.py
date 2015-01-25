@@ -1,10 +1,11 @@
 import logging
 import argparse
 from oscar import OscarServer
+from oscar import __version__
 
 def main():
     # Command line arguments
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(prog='oscar')
     p.add_argument('--debug',
                    action='store_true',
                    help='Print debug output')
@@ -36,6 +37,10 @@ def main():
     p.add_argument('--autosave-interval',
                    default=60,
                    help='How often to save state to the state file, in seconds (default: 60)')
+    p.add_argument('--version',
+                   action='version',
+                   version='%(prog)s {}'.format(__version__),
+                   help='Display version')
     args = p.parse_args()
 
     # Configure logging
