@@ -93,7 +93,7 @@ class PersistState(object):
                     f(i,1,v[0],ignore=self.name)
                 else:
                     f(i,v,ignore=self.name)
-                time.sleep(0.01)
+                time.sleep(0.05)
 
     def __getattr__(self, method_name):
         def wrapper_method(i, v):

@@ -5,6 +5,7 @@ from .devicemanager import DeviceManager
 from .ardour import Ardour
 from .persiststate import PersistState
 from .touchosc import TouchOSC
+from .zeroconf import OscarService
 
 # TODO: It might be nice to interactively re-broadcast the current state
 #       (e.g. for the case when TouchOSC is restarted or started late).
@@ -17,6 +18,7 @@ class OscarServer(liblo.ServerThread):
                  autosave=True, autosave_interval=60):
         liblo.ServerThread.__init__(self, oscar_port)
         self.log = logging.getLogger(__name__)
+        self.os = OscarService(oscar_port)
 
         # Set up all devices: Ardour, PersistState and TouchOSC
         self.dm = DeviceManager()
@@ -44,10 +46,11 @@ class OscarServer(liblo.ServerThread):
         # also assumes that updates to PersistState.state are atomic --- which
         # right now should be true (plus there's the global interpreter lock);
         # otherwise we might store an inconsistent state.
+        self.os.publish()
         liblo.ServerThread.start(self)
-        self.ardour.start()
         self.touchosc.start()
-        if self.ardour.ready() and self.touchosc.ready():
+        self.ardour.start()
+        if self.touchosc.ready() and self.ardour.ready():
             self.persist.restore()
         else:
             self.persist_state = False
@@ -58,6 +61,7 @@ class OscarServer(liblo.ServerThread):
             self.saver_thread.start()
 
     def stop(self):
+        self.os.unpublish()
         liblo.ServerThread.stop(self)
         self.ardour.stop()
         self.touchosc.stop()

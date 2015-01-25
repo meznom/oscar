@@ -17,13 +17,10 @@ class Ardour(object):
         # The Ardour bus ids. This is hardcoded for now. 318 is the master bus.
         self.ids = range(1,self.n_tracks+1) + [self.master_id]
         self.dm = dm
+        self.ip = ip
+        self.port = port
+        self.c = None
         self.is_ready = False
-
-        try:
-            self.c = liblo.Address(ip, port)
-        except liblo.AddressError, e:
-            self.log.warning('Could not connect to Ardour.')
-            self.c = None
 
     def __del__(self):
         self.stop_listening_to_feedback()
@@ -67,6 +64,13 @@ class Ardour(object):
         # now
 
     def start(self):
+        self.is_ready = False
+        try:
+            self.c = liblo.Address(self.ip, self.port)
+        except liblo.AddressError, e:
+            self.log.error('Could not connect to Ardour.')
+            return
+
         timeout = 60
         t = 0
         while not self.is_ready:
@@ -75,14 +79,15 @@ class Ardour(object):
             time.sleep(1)
             t += 1
             if t>timeout:
-                self.log.warning('I did not hear back from Ardour for {} '
-                                 'seconds, giving up'.format(timeout))
+                self.log.error('I did not hear back from Ardour for {} '
+                               'seconds, giving up'.format(timeout))
                 return
         self.log.info('Ardour is ready')
 
     def stop(self):
         self.sendosc('/routes/ignore', *self.ids)
         self.is_ready = False
+        self.c = None
 
     def ready(self):
         return self.is_ready

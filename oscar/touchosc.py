@@ -1,11 +1,16 @@
 import liblo
 import logging
+from .zeroconf import discover_touchosc
 
 class TouchOSC(object):
-    def __init__(self, dm, ip, port=9000):
+    def __init__(self, dm, ip='zeroconf', port=9000):
         self.log = logging.getLogger(__name__)
         self.name = 'touchosc'
+        self.c = None
         self.dm = dm
+        self.ip = ip
+        self.port = port
+        self.is_ready = False
 
         self.n_tracks = 12
         self.tracks_per_page = 4
@@ -15,12 +20,6 @@ class TouchOSC(object):
         # Ardour for play, stop, and recordglobal; obviously, this only
         # works as long as the user does not use the Ardour GUI
         self.state = {'playing': False, 'recording': False, 'removing': False}
-
-        try:
-            self.c = liblo.Address(ip, port)
-        except liblo.AddressError, e:
-            self.log.warning('Could not connect to TouchOSC.')
-            self.c = None
 
     def sendosc(self, pagenumber, path, *args):
         if self.c is None:
@@ -125,17 +124,36 @@ class TouchOSC(object):
                 self.dm.remove_all_regions_on_track(i)
 
     def start(self):
-        pass
+        self.is_ready = False
+        if self.ip=='zeroconf':
+            ip_,port_ = discover_touchosc()
+            if ip_ is not None and port_ is not None:
+                self.ip = ip_
+                self.port = port_
+            else:
+                self.log.error('Could not discover TouchOSC on the network '
+                               'with Zeroconf. Please make sure TouchOSC is '
+                               'running. Alternatively, explicitely provide '
+                               'TouchOSC\'s IP address.')
+                return
+        try:
+            self.c = liblo.Address(self.ip, self.port)
+        except liblo.AddressError, e:
+            self.log.error('Could not connect to TouchOSC.')
+            return
+        self.is_ready = True
 
     def stop(self):
-        pass
+        self.is_ready = False
+        self.c = None
 
     def ready(self):
-        # It seems there is no way to know whether TouchOSC is actually there or
-        # not. Hence we assume it is always ready. (There is the ping option,
-        # which sends a /ping message, but only every 60 seconds which is too
-        # long to wait to start up oscar.)
-        return True
+        # For TouchOSC, is_ready only says whether we managed to open the network
+        # connection. It seems there is no way to know whether TouchOSC is
+        # actually there or not. Hence we assume it is always ready. (There is
+        # the ping option, which sends a /ping message, but only every 60
+        # seconds which is too long to wait to start up oscar.)
+        return self.is_ready
 
     def vol(self, i, v):
         self.sendosc(self.pagenumber(i), '/vol_{}'.format(i), v)

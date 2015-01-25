@@ -9,8 +9,9 @@ def main():
                    action='store_true',
                    help='Print debug output')
     p.add_argument('--touchosc-ip',
-                   default='127.0.0.1',
-                   help='IP address of TouchOSC (default: 127.0.0.1)')
+                   default='zeroconf',
+                   help='IP address of TouchOSC (default: Use Zerconf to '
+                        'discover TouchOSC\'s address and port)')
     p.add_argument('--touchosc-port',
                    default='9000',
                    help='Port of TouchOSC (default: 9000)')
